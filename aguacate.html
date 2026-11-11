@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aguacate & Huevo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8ef;
+            color: #263522;
+        }
+
+        header {
+            background: #245c36;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background: #173f27;
+            padding: 14px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        .portada {
+            text-align: center;
+            padding: 45px 20px;
+            background: #e2edcf;
+        }
+
+        .portada h2 {
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .portada p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #397b36;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .boton:hover {
+            background: #245c36;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px;
+        }
+
+        .contenedor > h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 4px 12px #00000012;
+        }
+
+        .imagen {
+            font-size: 60px;
+            margin-bottom: 12px;
+        }
+
+        .producto h3 {
+            margin-bottom: 10px;
+        }
+
+        .producto p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 24px;
+            font-weight: bold;
+            color: #397b36;
+            margin-bottom: 15px;
+        }
+
+        .producto input {
+            width: 65px;
+            padding: 8px;
+            margin: 10px 0;
+        }
+
+        .producto button {
+            width: 100%;
+        }
+
+        .carrito {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px #00000012;
+        }
+
+        .carrito h2 {
+            margin-bottom: 15px;
+        }
+
+        .carrito ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .carrito li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            line-height: 1.6;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .vaciar {
+            background: #777;
+        }
+
+        .contacto {
+            text-align: center;
+            padding: 30px 20px;
+            background: #e2edcf;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #173f27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 26px;
+            }
+
+            .portada h2 {
+                font-size: 24px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🥑 Aguacate & Huevo 🍳</h1>
+    <p>¡Frescura y sabor en cada bocado!</p>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Menú</a>
+    <a href="#carrito">Mi pedido</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section class="portada" id="inicio">
+    <h2>¡Algo delicioso te espera!</h2>
+    <p>
+        Disfruta la combinación de aguacate fresco
+        y huevo preparado al momento.
+    </p>
+    <a href="#menu" class="boton">Ver menú</a>
+</section>
+
+<section class="contenedor" id="menu">
+    <h2>🥑 Nuestro menú 🍳</h2>
+
+    <div class="productos">
+
+        <div class="producto">
+            <div class="imagen">🥑🍳</div>
+            <h3>Clásico de aguacate y huevo</h3>
+            <p>Pan tostado con aguacate fresco y huevo.</p>
+            <div class="precio">$45.00</div>
+            <label>
+                Cantidad:
+                <input type="number" id="cantidad0"
+                    value="1" min="1" max="99">
+            </label>
+            <button class="boton" onclick="agregar(0)">
+                Agregar al pedido
+            </button>
+        </div>
+
+        <div class="producto">
+            <div class="imagen">🥪🥑</div>
+            <h3>Sándwich verde</h3>
+            <p>Pan integral, aguacate y huevo.</p>
+            <div class="precio">$55.00</div>
+            <label>
+                Cantidad:
+                <input type="number" id="cantidad1"
+                    value="1" min="1" max="99">
+            </label>
+            <button class="boton" onclick="agregar(1)">
+                Agregar al pedido
+            </button>
+        </div>
+
+        <div class="producto">
+            <div class="imagen">🍞🍳</div>
+            <h3>Tostadas especiales</h3>
+            <p>Dos tostadas con aguacate, huevo y semillas.</p>
+            <div class="precio">$60.00</div>
+            <label>
+                Cantidad:
+                <input type="number" id="cantidad2"
+                    value="1" min="1" max="99">
+            </label>
+            <button class="boton" onclick="agregar(2)">
+                Agregar al pedido
+            </button>
+        </div>
+
+        <div class="producto">
+            <div class="imagen">🌯🥑</div>
+            <h3>Burrito de aguacate y huevo</h3>
+            <p>Tortilla de harina rellena de huevo y aguacate.</p>
+            <div class="precio">$50.00</div>
+            <label>
+                Cantidad:
+                <input type="number" id="cantidad3"
+                    value="1" min="1" max="99">
+            </label>
+            <button class="boton" onclick="agregar(3)">
+                Agregar al pedido
+            </button>
+        </div>
+
+    </div>
+
+    <div class="carrito" id="carrito">
+        <h2>🛒 Mi pedido</h2>
+
+        <p id="vacio">Todavía no has agregado productos.</p>
+
+        <ul id="lista"></ul>
+
+        <p class="total">
+            Total: $<span id="total">0.00</span> MXN
+        </p>
+
+        <div class="acciones">
+            <button class="boton" onclick="pedirWhatsApp()">
+                📱 Pedir por WhatsApp
+            </button>
+
+            <button class="boton vaciar" onclick="vaciarCarrito()">
+                Vaciar pedido
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="contacto" id="contacto">
+    <h2>📞 Contáctanos</h2>
+    <p>¡Gracias por elegirnos!</p>
+    <p>Horario: lunes a viernes, de 8:00 a 14:00.</p>
+    <p>Pedidos preparados al momento.</p>
+</section>
+
+<footer>
+    <p>© 2026 Aguacate & Huevo</p>
+    <p>¡Frescura y sabor en cada bocado! 🥑</p>
+</footer>
+
+<script>
+    const productos = [
+        {
+            nombre: "Clásico de aguacate y huevo",
+            precio: 45
+        },
+        {
+            nombre: "Sándwich verde",
+            precio: 55
+        },
+        {
+            nombre: "Tostadas especiales",
+            precio: 60
+        },
+        {
+            nombre: "Burrito de aguacate y huevo",
+            precio: 50
+        }
+    ];
+
+    // Número de WhatsApp del negocio en México.
+    const telefono = "522461796081";
+
+    let carrito = [];
+
+    function agregar(indice) {
+        const input = document.getElementById(
+            "cantidad" + indice
+        );
+
+        const cantidad = Number(input.value);
+
+        if (
+            !Number.isInteger(cantidad) ||
+            cantidad < 1 ||
+            cantidad > 99
+        ) {
+            alert("Ingresa una cantidad entre 1 y 99.");
+            return;
+        }
+
+        const existente = carrito.find(
+            item => item.indice === indice
+        );
+
+        if (existente) {
+            existente.cantidad += cantidad;
+        } else {
+            carrito.push({
+                indice: indice,
+                nombre: productos[indice].nombre,
+                precio: productos[indice].precio,
+                cantidad: cantidad
+            });
+        }
+
+        actualizarCarrito();
+        input.value = 1;
+    }
+
+    function actualizarCarrito() {
+        const lista = document.getElementById("lista");
+        const totalElemento = document.getElementById("total");
+        const vacio = document.getElementById("vacio");
+
+        lista.innerHTML = "";
+
+        let total = 0;
+
+        carrito.forEach((item, posicion) => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+
+            const li = document.createElement("li");
+
+            li.textContent =
+                item.nombre + " × " + item.cantidad +
+                " = $" + subtotal.toFixed(2) + " MXN ";
+
+            const boton = document.createElement("button");
+
+            boton.textContent = "Quitar";
+            boton.type = "button";
+            boton.className = "boton vaciar";
+            boton.style.padding = "6px 10px";
+
+            boton.onclick = function () {
+                quitarProducto(posicion);
+            };
+
+            li.appendChild(boton);
+            lista.appendChild(li);
+        });
+
+        totalElemento.textContent = total.toFixed(2);
+
+        vacio.style.display =
+            carrito.length === 0 ? "block" : "none";
+    }
+
+    function quitarProducto(posicion) {
+        carrito.splice(posicion, 1);
+        actualizarCarrito();
+    }
+
+    function vaciarCarrito() {
+        carrito = [];
+        actualizarCarrito();
+    }
+
+    function pedirWhatsApp() {
+        if (carrito.length === 0) {
+            alert("Primero agrega productos a tu pedido.");
+            return;
+        }
+
+        let mensaje = "¡Hola! Quiero hacer un pedido:\n\n";
+        let total = 0;
+
+        carrito.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+
+            mensaje +=
+                item.nombre + " x " + item.cantidad +
+                " = $" + subtotal.toFixed(2) + " MXN\n";
+        });
+
+        mensaje +=
+            "\nTOTAL: $" + total.toFixed(2) + " MXN" +
+            "\n\n¿Me confirman mi pedido, por favor?";
+
+        const url =
+            "https://wa.me/" + telefono +
+            "?text=" + encodeURIComponent(mensaje);
+
+        window.open(url, "_blank");
+    }
+
+    actualizarCarrito();
+</script>
+
+</body>
+</html>
+```
